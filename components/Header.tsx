@@ -2,7 +2,6 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import * as React from "react";
@@ -22,15 +21,15 @@ const Header = ({ children, className }: HeaderProps) => {
       animate={prefersReducedMotion ? undefined : { y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 140, damping: 18 }}
       className={cn(
-        "sticky top-0 z-50 border-b border-black/5 dark:border-white/10",
-        "bg-white/70 dark:bg-neutral-900/60 backdrop-blur supports-[backdrop-filter]:bg-white/55",
+        "sticky top-0 z-50 border-b border-indigo-500/20 dark:border-indigo-300/20",
+        "bg-[rgba(30,27,75,0.75)] dark:bg-[rgba(17,24,39,0.75)] backdrop-blur-md supports-[backdrop-filter]:bg-[rgba(30,27,75,0.65)]",
         className
       )}
     >
       {/* Skip link for accessibility */}
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] rounded-lg bg-black text-white px-3 py-2 text-sm dark:bg-white dark:text-black"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] rounded-lg bg-indigo-600 text-white px-3 py-2 text-sm dark:bg-indigo-300 dark:text-black"
       >
         Skip to content
       </a>
@@ -41,46 +40,23 @@ const Header = ({ children, className }: HeaderProps) => {
           aria-label="Go to homepage"
           className="group relative inline-flex items-center"
         >
-          {/* Desktop logo */}
+          {/* Text-based logo */}
           <motion.span
             whileHover={prefersReducedMotion ? undefined : { scale: 1.02 }}
             whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
-            className="hidden md:inline-flex"
+            className="font-bold tracking-tight text-xl md:text-2xl bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
           >
-            <Image
-              src="/assets/icons/logo.svg"
-              alt="Logo with name"
-              width={128}
-              height={32}
-              priority
-              className="h-8 w-auto"
-            />
-          </motion.span>
-
-          {/* Mobile mark */}
-          <motion.span
-            whileHover={prefersReducedMotion ? undefined : { scale: 1.05, rotate: 1 }}
-            whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
-            className="md:hidden mr-1.5 inline-flex"
-          >
-            <Image
-              src="/assets/icons/logo-icon.svg"
-              alt="Logo"
-              width={32}
-              height={32}
-              priority
-              className="h-8 w-8"
-            />
+            Editly
           </motion.span>
 
           {/* Subtle glow on hover */}
-          <span className="pointer-events-none absolute -inset-2 -z-10 rounded-xl opacity-0 transition-opacity group-hover:opacity-100 bg-gradient-to-r from-black/5 to-black/0 dark:from-white/10" />
+          <span className="pointer-events-none absolute -inset-2 -z-10 rounded-xl opacity-0 transition-opacity group-hover:opacity-100 bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10" />
         </Link>
 
         {/* Divider bubble on large screens */}
-        <div className="hidden md:block h-8 w-px bg-gradient-to-b from-transparent via-black/10 to-transparent dark:via-white/15" />
+        <div className="hidden md:block h-8 w-px bg-gradient-to-b from-transparent via-indigo-400/30 to-transparent dark:via-purple-300/30" />
 
-        {/* Right-side actions (search, profile, theme toggle, etc.) */}
+        {/* Right-side actions */}
         <div className="ml-auto flex items-center gap-2 sm:gap-3">
           {children}
         </div>
@@ -92,7 +68,7 @@ const Header = ({ children, className }: HeaderProps) => {
         initial={prefersReducedMotion ? false : { scaleX: 0, opacity: 0 }}
         animate={prefersReducedMotion ? undefined : { scaleX: 1, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="h-px w-full origin-left bg-gradient-to-r from-transparent via-black/10 to-transparent dark:via-white/15"
+        className="h-px w-full origin-left bg-gradient-to-r from-transparent via-indigo-400/30 to-transparent dark:via-purple-300/30"
       />
     </motion.header>
   );
